@@ -1,0 +1,13 @@
+{
+  "name": "fabrication-tasks-electron",
+  "version": "1.0.0",
+  "description": "Project Management Interface using Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^latest"
+  },
+  "dependencies": {}
+}

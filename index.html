@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Management Interface</title>
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://apis.google.com https://cdnjs.cloudflare.com 'unsafe-inline'; object-src 'none';">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="renderer.js"></script>
+</head>
+<body>
+  <span class="hamburger" onclick="toggleNav()">&#9776;</span>
+  <div class="sidebar" id="sidebar">
+    <button id="refresh-button" onclick="loadSheetData()">Refresh</button>
+    <input type="text" id="search-input" placeholder="Search projects..." onkeyup="filterProjects()">
+    <section class="container" id="project-list">
+      <!-- Project cards will be dynamically inserted here -->
+    </section>
+    <div id="loading-spinner">Loading...</div>
+  </div>
+
+  <div id="main">
+    <div class="browser-controls">
+      <button onclick="goBack()">Back</button>
+      <button onclick="goForward()">Forward</button>
+      <button onclick="reloadPage()">Refresh</button>
+      <button onclick="goHome()">Home</button>
+    </div>
+    <div class="iframe-container" id="iframe-container">
+      <!-- The iframe for displaying links will be dynamically inserted here -->
+    </div>
+  </div>
+
+  <script>
+    function toggleNav() {
+      const sidebar = document.getElementById('sidebar');
+      const main = document.getElementById('main');
+      if (sidebar.classList.contains('collapsed')) {
+        sidebar.classList.remove('collapsed');
+        main.style.marginLeft = '320px';
+        main.style.width = 'calc(100% - 320px)';
+      } else {
+        sidebar.classList.add('collapsed');
+        main.style.marginLeft = '20px';
+        main.style.width = 'calc(100% - 20px)';
+      }
+    }
+
+    function filterProjects() {
+      const searchInput = document.getElementById('search-input').value.toLowerCase();
+      const projectCards = document.getElementsByClassName('project-card');
+
+      Array.from(projectCards).forEach(card => {
+        const orderNumber = card.children[0].innerText.toLowerCase();
+        const projectName = card.children[1].innerText.toLowerCase();
+
+        if (orderNumber.includes(searchInput) || projectName.includes(searchInput)) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function adjustMainMargin() {
+      const sidebarWidth = document.querySelector('.sidebar').offsetWidth;
+      document.getElementById('main').style.marginLeft = sidebarWidth + 'px';
+    }
+
+    window.addEventListener('resize', adjustMainMargin);
+    adjustMainMargin();
+  </script>
+</body>
+</html>
