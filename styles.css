@@ -162,3 +162,8 @@ body {
   background-color: #006496; /* Awnex primary blue */
   color: #fff;
 }
+.project-card .order-info {
+  background-color: rgba(128, 128, 128, 0.5); /* 50% opacity grey */
+  padding: 5px;
+  border-radius: 3px;
+}

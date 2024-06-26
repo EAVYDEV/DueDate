@@ -83,7 +83,7 @@ function loadSheetData() {
         card.style.border = '10px solid rgba(255, 0, 0, 0.75)'; // 75% transparent red border
       }
       card.innerHTML = `
-        <div>${orderNumber} - ${name}</div>
+        <div class="order-info">${orderNumber} - ${name}</div>
         <div><b>Fab Due:</b> ${fabDue}</div>
         <div><b>Zone:</b> ${zone}</div>
         <div><b>Scope:</b> ${scope}</div>
