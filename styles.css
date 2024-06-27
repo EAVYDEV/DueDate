@@ -37,9 +37,20 @@ header h1 {
   text-align: center; /* Center the text within the flex container */
 }
 
+.utility-bar {
+  display: flex;
+  justify-content: center; /* Center the controls */
+  align-items: center;
+  padding: 10px 10px;
+  background-color: #006496; /* Slightly darker blue */
+  position: sticky;
+  top: 50px; /* Adjust based on the height of your header */
+  z-index: 999;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .browser-controls {
-  position: absolute;
-  right: 20px;
   display: flex;
   align-items: center;
 }
@@ -58,19 +69,6 @@ header h1 {
 .browser-controls i {
   font-size: 20px; /* Adjust icon size if necessary */
   color: #ffbe00; /* Icon color */
-}
-
-.utility-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 10px;
-  background-color: #006496; /* Slightly darker blue */
-  position: sticky;
-  top: 50px; /* Adjust based on the height of your header */
-  z-index: 999;
-  width: 100%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar {
@@ -95,7 +93,7 @@ header h1 {
 .sidebar .sticky-controls {
   position: sticky;
   top: 0;
-  background-color: inherit;
+  background-color:  #ffbe00;
   width: 100%;
   padding: 10px 0;
   z-index: 100;
