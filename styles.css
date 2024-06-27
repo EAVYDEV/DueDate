@@ -39,15 +39,24 @@ header h1 {
 
 .utility-bar {
   display: flex;
-  justify-content: center; /* Center the controls */
+  justify-content: space-between; /* Space between search input and browser controls */
   align-items: center;
-  padding: 10px 10px;
+  padding: 10px 20px;
   background-color: #006496; /* Slightly darker blue */
   position: sticky;
   top: 50px; /* Adjust based on the height of your header */
   z-index: 999;
   width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#search-input {
+  width: 300px; /* Adjust width as necessary */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #006496; /* Awnex primary blue */
+  border-radius: 5px;
+  background-color: #ffffff; /* White background to avoid transparency */
 }
 
 .browser-controls {
@@ -186,17 +195,13 @@ header h1 {
   font-size: 18px;
 }
 
-#search-input, #refresh-button {
+#refresh-button {
   width: 90%; /* Adjusted width to be responsive */
   padding: 10px;
   font-size: 16px;
   border: 1px solid #006496; /* Awnex primary blue */
   border-radius: 5px;
   margin-bottom: 10px; /* Space between buttons */
-  background-color: #ffffff; /* White background to avoid transparency */
-}
-
-#refresh-button {
   background-color: #006496; /* Awnex primary blue */
   color: #fff;
   cursor: pointer;
