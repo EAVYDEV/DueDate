@@ -1,9 +1,9 @@
 /* Add styles for the horizontal line */
 .horizontal-line {
   width: 90%; /* Match the width of the refresh button */
-  height: 5px; /* Adjusted height */
-  background-color: #00649693;
-  margin-top: 5px;
+  height: 10px; /* Adjusted height */
+  background-color: #f4f4f4;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
@@ -50,13 +50,20 @@ header h1 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#search-input {
-  width: 20%; /* Match the width of the refresh button */
+#search-input, #refresh-button {
+  width: 300px; /* Match the width */
   padding: 10px;
   font-size: 16px;
   border: 1px solid #006496; /* Awnex primary blue */
   border-radius: 5px;
   background-color: #ffffff; /* White background to avoid transparency */
+  margin-bottom: 10px; /* Space between buttons */
+}
+
+#refresh-button {
+  background-color: #006496; /* Awnex primary blue */
+  color: #fff;
+  cursor: pointer;
 }
 
 .browser-controls {
@@ -193,18 +200,6 @@ header h1 {
   display: none;
   text-align: center;
   font-size: 18px;
-}
-
-#refresh-button {
-  width: 90%; /* Adjusted width to be responsive */
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #006496; /* Awnex primary blue */
-  border-radius: 5px;
-  margin-bottom: 10px; /* Space between buttons */
-  background-color: #006496; /* Awnex primary blue */
-  color: #fff;
-  cursor: pointer;
 }
 
 .iframe-container {
