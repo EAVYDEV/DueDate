@@ -74,6 +74,10 @@ header h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: sticky;
+  top: 0;
+  background-color: inherit;
+  z-index: 100;
 }
 
 .sidebar-controls input[type="text"],
@@ -103,18 +107,6 @@ header h1 {
   color: #fff; /* White text */
   border: none;
   cursor: pointer;
-}
-
-.sidebar .sticky-controls {
-  position: sticky;
-  top: 0;
-  background-color: inherit;
-  width: 100%;
-  padding: 10px 0;
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .collapsed {
