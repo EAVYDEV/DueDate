@@ -12,9 +12,10 @@ function createWindow() {
     }
   });
 
-  mainWindow.loadFile('index.html');
+  mainWindow.loadFile('index.html').catch(error => {
+    console.error('Failed to load index.html:', error);
+  });
 
-  // Enable touch events
   mainWindow.webContents.on('did-finish-load', () => {
     mainWindow.webContents.executeJavaScript(`
       document.addEventListener('DOMContentLoaded', () => {
@@ -23,7 +24,10 @@ function createWindow() {
     `);
   });
 
-  // Handle cookies better on iOS
+  setCookies();
+}
+
+function setCookies() {
   session.defaultSession.cookies.set({
     url: 'http://yourappurl.com',
     name: 'cookieName',

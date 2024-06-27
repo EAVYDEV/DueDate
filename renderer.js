@@ -6,7 +6,7 @@ let historyIndex = -1;
 
 function handleClientLoad() {
   console.log('Google API client library loaded');
-  document.getElementById('loading-spinner').style.display = 'block';
+  toggleLoadingSpinner(true);
   gapi.load('client', initClient);
 }
 
@@ -19,15 +19,13 @@ async function initClient() {
     console.log('gapi client initialized');
     loadSheetData();
   } catch (error) {
-    console.error('Error initializing gapi client:', error);
-    alert('Failed to initialize Google API client. Please check the console for more details.');
-    document.getElementById('loading-spinner').style.display = 'none';
+    handleError('Failed to initialize Google API client', error);
   }
 }
 
 async function loadSheetData() {
   console.log('loadSheetData');
-  document.getElementById('loading-spinner').style.display = 'block';
+  toggleLoadingSpinner(true);
   try {
     const response = await gapi.client.sheets.spreadsheets.values.get({
       spreadsheetId: '1jsDYK8wIA6_UxZPNU8G8CNKfc-xBOcZeDSKcL5SC0bY',
@@ -35,14 +33,12 @@ async function loadSheetData() {
     });
     displaySheetData(response.result.values);
   } catch (error) {
-    console.error('Error fetching data from Google Sheets:', error);
-    alert('Failed to fetch data from Google Sheets. Please check the console for more details.');
-    document.getElementById('loading-spinner').style.display = 'none';
+    handleError('Failed to fetch data from Google Sheets', error);
   }
 }
 
 function displaySheetData(data) {
-  document.getElementById('loading-spinner').style.display = 'none';
+  toggleLoadingSpinner(false);
   const projectList = document.getElementById('project-list');
   const currentDate = new Date();
   projectList.innerHTML = '';
@@ -60,7 +56,7 @@ function displaySheetData(data) {
 
 function createProjectCard(row, currentDate) {
   const [orderNumber, name, fabDue, zone, scope, am, qcNotes, link, drawingsLink, qcReady] = row;
-  let fabDueDate = parseDate(fabDue);
+  const fabDueDate = parseDate(fabDue);
   const isPastDue = fabDueDate && fabDueDate < currentDate;
   const card = document.createElement('div');
   card.className = `project-card ${isPastDue ? 'red' : 'orange'}`;
@@ -153,17 +149,12 @@ function filterProjects() {
 
   Array.from(projectCards).forEach(card => {
     const orderInfo = card.querySelector('.order-info').innerText.toLowerCase();
-    if (orderInfo.includes(searchInput)) {
-      card.style.display = '';
-    } else {
-      card.style.display = 'none';
-    }
+    card.style.display = orderInfo.includes(searchInput) ? '' : 'none';
   });
 }
 
 function addTouchSupport() {
   const hammer = new Hammer(document.body);
-
   hammer.on('swipeleft', goBack);
   hammer.on('swiperight', goForward);
 
@@ -230,6 +221,16 @@ function goToAddQC() {
   } else {
     alert('Please set a valid QC URL in the settings.');
   }
+}
+
+function toggleLoadingSpinner(show) {
+  document.getElementById('loading-spinner').style.display = show ? 'block' : 'none';
+}
+
+function handleError(message, error) {
+  console.error(message, error);
+  alert(`${message}. Please check the console for more details.`);
+  toggleLoadingSpinner(false);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
