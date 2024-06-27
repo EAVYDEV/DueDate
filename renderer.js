@@ -65,7 +65,7 @@ function createProjectCard(row, currentDate) {
   const card = document.createElement('div');
   card.className = `project-card ${isPastDue ? 'red' : 'orange'}`;
   if (fabDueDate) card.setAttribute('data-date', fabDueDate.toISOString().split('T')[0]);
-  if (qcReady.toLowerCase() === 'yes') card.style.border = '10px solid rgba(255, 0, 0, 0.75)';
+  if (qcReady && qcReady.toLowerCase() === 'yes') card.style.border = '10px solid rgba(255, 0, 0, 0.75)';
   card.innerHTML = generateCardHTML(orderNumber, name, fabDue, zone, scope, am, qcNotes, link, drawingsLink, qcReady);
   if (isValidUrl(link)) card.addEventListener('click', () => openLink(link));
   return { card, qcReady };
@@ -83,14 +83,14 @@ function generateCardHTML(orderNumber, name, fabDue, zone, scope, am, qcNotes, l
     <div><b>Zone:</b> ${zone}</div>
     <div><b>Scope:</b> ${scope}</div>
     <div><b>AM:</b> ${am}</div>
-    ${qcReady.toLowerCase() === 'yes' ? `<div><b>QC Notes:</b> ${qcNotes}</div>` : ''}
+    ${qcReady && qcReady.toLowerCase() === 'yes' ? `<div><b>QC Notes:</b> ${qcNotes}</div>` : ''}
     ${isValidUrl(drawingsLink) ? `<div><a href="#" onclick="openLink('${drawingsLink}'); return false;">View Drawings</a></div>` : ''}
   `;
 }
 
 function sortProjectCards(a, b) {
-  if (a.qcReady.toLowerCase() === 'yes' && b.qcReady.toLowerCase() !== 'yes') return -1;
-  if (a.qcReady.toLowerCase() !== 'yes' && b.qcReady.toLowerCase() === 'yes') return 1;
+  if (a.qcReady && a.qcReady.toLowerCase() === 'yes' && (!b.qcReady || b.qcReady.toLowerCase() !== 'yes')) return -1;
+  if (b.qcReady && b.qcReady.toLowerCase() === 'yes' && (!a.qcReady || a.qcReady.toLowerCase() !== 'yes')) return 1;
   return new Date(a.card.getAttribute('data-date')) - new Date(b.card.getAttribute('data-date'));
 }
 
@@ -150,7 +150,7 @@ function filterProjects() {
   const projectCards = document.getElementsByClassName('project-card');
 
   Array.from(projectCards).forEach(card => {
-    const orderInfo = card.getElementsByClassName('order-info')[0].innerText.toLowerCase();
+    const orderInfo = card.querySelector('.order-info').innerText.toLowerCase();
     if (orderInfo.includes(searchInput)) {
       card.style.display = '';
     } else {
@@ -199,4 +199,5 @@ function handleTouchEnd(evt) {
 document.addEventListener('DOMContentLoaded', () => {
   handleClientLoad();
   addTouchSupport();
+  document.getElementById('search-input').addEventListener('input', filterProjects);
 });
