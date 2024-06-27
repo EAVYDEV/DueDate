@@ -145,4 +145,44 @@ function goHome() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', handleClientLoad);
+function addTouchSupport() {
+  const hammer = new Hammer(document.body);
+
+  hammer.on('swipeleft', goBack);
+  hammer.on('swiperight', goForward);
+
+  const projectCards = document.getElementsByClassName('project-card');
+  Array.from(projectCards).forEach(card => {
+    card.addEventListener('touchstart', handleTouchStart, false);
+    card.addEventListener('touchend', handleTouchEnd, false);
+  });
+}
+
+let touchStartX = null;
+function handleTouchStart(evt) {
+  const firstTouch = evt.touches[0];
+  touchStartX = firstTouch.clientX;
+}
+
+function handleTouchEnd(evt) {
+  if (!touchStartX) {
+    return;
+  }
+
+  const touchEndX = evt.changedTouches[0].clientX;
+  const touchDiff = touchStartX - touchEndX;
+
+  if (Math.abs(touchDiff) > 50) {
+    if (touchDiff > 0) {
+      goBack();
+    } else {
+      goForward();
+    }
+  }
+  touchStartX = null;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  handleClientLoad();
+  addTouchSupport();
+});
