@@ -163,7 +163,7 @@ body {
   color: #fff;
 }
 .project-card .order-info {
-  background-color: rgba(128, 128, 128, 0.5); /* 50% opacity grey */
+  background-color: rgba(255, 0, 204, 0.9); /* 50% opacity grey */
   padding: 5px;
   border-radius: 3px;
 }
