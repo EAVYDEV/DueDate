@@ -13,16 +13,15 @@
   <script src="renderer.js"></script>
 </head>
 <body>
-  <div class="header">
-    <div class="logo">Awnex Project Management</div>
-    <div class="utility-bar">
-      <button onclick="refreshData()">Refresh</button>
-      <button onclick="toggleSidebar()">Toggle Sidebar</button>
-    </div>
+  <header>
+    <h1>Project Management Interface</h1>
+  </header>
+  <div class="utility-bar">
+    <button onclick="toggleNav()">&#9776; Toggle Sidebar</button>
+    <!-- Add any additional utility buttons or elements here -->
   </div>
-
-  <span class="hamburger" onclick="toggleNav()">&#9776;</span>
   <div class="sidebar" id="sidebar">
+    <button id="refresh-button" onclick="loadSheetData()">Refresh</button>
     <input type="text" id="search-input" placeholder="Search projects..." onkeyup="filterProjects()">
     <section class="container" id="project-list">
       <!-- Project cards will be dynamically inserted here -->
