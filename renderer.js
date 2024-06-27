@@ -196,25 +196,29 @@ function handleTouchEnd(evt) {
   touchStartX = null;
 }
 
-function toggleSettings() {
-  const modal = document.getElementById('settings-modal');
-  if (modal.style.display === "block") {
-    modal.style.display = "none";
-  } else {
-    modal.style.display = "block";
+function goToSettings() {
+  document.getElementById('settings-page').classList.remove('hidden');
+  document.getElementById('main').classList.add('hidden');
+  document.getElementById('sidebar').classList.add('hidden');
+  const savedUrl = localStorage.getItem('qcUrl');
+  if (savedUrl) {
+    document.getElementById('qc-url-input').value = savedUrl;
   }
 }
 
 function saveSettings() {
   const qcUrlInput = document.getElementById('qc-url-input').value;
   localStorage.setItem('qcUrl', qcUrlInput);
-  toggleSettings();
+  alert('Settings saved.');
+  document.getElementById('settings-page').classList.add('hidden');
+  document.getElementById('main').classList.remove('hidden');
+  document.getElementById('sidebar').classList.remove('hidden');
 }
 
 function goToAddQC() {
   const qcUrl = localStorage.getItem('qcUrl');
   if (qcUrl && isValidUrl(qcUrl)) {
-    window.open(qcUrl, '_blank');
+    openLink(qcUrl);
   } else {
     alert('Please set a valid QC URL in the settings.');
   }

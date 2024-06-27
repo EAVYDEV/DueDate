@@ -20,7 +20,7 @@
       <button onclick="goForward()"><i class="fas fa-arrow-right"></i></button>
       <button onclick="reloadPage()"><i class="fas fa-sync-alt"></i></button>
       <button onclick="goHome()"><i class="fas fa-home"></i></button>
-      <button onclick="toggleSettings()"><i class="fas fa-cog"></i></button>
+      <button onclick="goToSettings()"><i class="fas fa-cog"></i></button>
     </div>
   </header>
   <div class="sidebar" id="sidebar">
@@ -39,14 +39,11 @@
       <!-- The iframe for displaying links will be dynamically inserted here -->
     </div>
   </div>
-  <div id="settings-modal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="toggleSettings()">&times;</span>
-      <h2>Settings</h2>
-      <label for="qc-url-input">QC URL:</label>
-      <input type="text" id="qc-url-input" placeholder="Enter QC URL">
-      <button onclick="saveSettings()">Save</button>
-    </div>
+  <div id="settings-page" class="hidden">
+    <h2>Settings</h2>
+    <label for="qc-url-input">QC URL:</label>
+    <input type="text" id="qc-url-input" placeholder="Enter QC URL">
+    <button onclick="saveSettings()">Save</button>
   </div>
 </body>
 </html>
