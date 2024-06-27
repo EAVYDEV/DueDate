@@ -175,7 +175,7 @@ header {
 
 .iframe-container {
   width: 100%;
-  height: calc(100% - 50px); /* Adjusted height to make space for controls */
+  height: calc(100% - 10px); /* Adjusted height to make space for controls */
   display: flex;
   align-items: center;
   justify-content: center;
