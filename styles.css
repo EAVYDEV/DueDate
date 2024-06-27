@@ -22,8 +22,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 10px;
-  background-color: #006496; /* Slightly darker blue */
+  padding: 10px 20px;
+  background-color: #005080; /* Slightly darker blue */
   position: sticky;
   top: 50px; /* Adjust based on the height of your header */
   z-index: 999;
@@ -48,11 +48,6 @@ header {
   align-items: center;
   resize: horizontal;
   overflow: auto;
-}
-
-.collapsed {
-  width: 0 !important;
-  overflow: hidden;
 }
 
 .sidebar a {
@@ -169,15 +164,21 @@ header {
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
+  gap: 10px; /* Adds space between the buttons */
 }
 
 .browser-controls button {
-  margin: 0 5px;
-  padding: 10px;
+  padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  border: 1px solid #006496; /* Awnex primary blue */
+  border: none;
   border-radius: 5px;
   background-color: #006496; /* Awnex primary blue */
   color: #fff;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.browser-controls button:hover {
+  background-color: #004a8e; /* Slightly darker blue on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
 }
