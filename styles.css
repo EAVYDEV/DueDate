@@ -48,7 +48,7 @@ header {
   position: fixed;
   top: 100px; /* Adjust based on header and utility bar height */
   left: 0;
-  background-color: #002e7217; /* Awnex primary blue */
+  background-color: #002e7200; /* Awnex primary blue */
   padding-top: 20px;
   transition: width 0.3s;
   overflow-y: auto;
@@ -146,13 +146,13 @@ header {
 }
 
 .blue-background-class {
-  background-color: lightblue;
+  background-color: rgba(173, 216, 230, 0.302);
 }
 
 #loading-spinner {
   display: none;
   text-align: center;
-  font-size: 18px;
+  font-size: 24px;
 }
 
 #search-input, #refresh-button {
