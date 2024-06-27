@@ -1,9 +1,56 @@
 body {
-  font-family: Arial, sans-serif;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
 }
 
-#main-content, #settings-page {
-  padding: 20px;
+header {
+  width: 100%;
+  background-color: #006496; /* Awnex primary blue */
+  color: white;
+  padding: 10px 20px; /* Adjust padding to reduce height */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Adjusted to space between the title and controls */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 60px; /* Adjusted height */
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.2em; /* Adjust font size if necessary */
+}
+
+.browser-controls {
+  display: flex;
+  align-items: center;
+}
+
+.browser-controls button {
+  margin: 0 5px;
+  padding: 10px; /* Adjust padding to reduce button size */
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid #006496; /* Awnex primary blue */
+  border-radius: 5px;
+  background-color: #006496; /* Awnex primary blue */
+  color: #ffffff; /* Icon color */
+}
+
+.browser-controls i {
+  font-size: 20px; /* Adjust icon size if necessary */
+  color: #ffffff; /* Icon color */
+}
+
+#main-content {
+  display: flex;
+  width: 100%;
+  height: calc(100% - 60px); /* Adjust based on header height */
 }
 
 .hidden {
