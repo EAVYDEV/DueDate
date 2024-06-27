@@ -198,8 +198,7 @@ function handleTouchEnd(evt) {
 
 function goToSettings() {
   document.getElementById('settings-page').classList.remove('hidden');
-  document.getElementById('main').classList.add('hidden');
-  document.getElementById('sidebar').classList.add('hidden');
+  document.getElementById('main-content').classList.add('hidden');
   const savedUrl = localStorage.getItem('qcUrl');
   if (savedUrl) {
     document.getElementById('qc-url-input').value = savedUrl;
@@ -215,8 +214,7 @@ function saveSettings() {
 
 function returnToMain() {
   document.getElementById('settings-page').classList.add('hidden');
-  document.getElementById('main').classList.remove('hidden');
-  document.getElementById('sidebar').classList.remove('hidden');
+  document.getElementById('main-content').classList.remove('hidden');
 }
 
 function goToAddQC() {
