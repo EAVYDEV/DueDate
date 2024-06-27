@@ -39,12 +39,12 @@ header h1 {
   border: 1px solid #006496; /* Awnex primary blue */
   border-radius: 5px;
   background-color: #006496; /* Awnex primary blue */
-  color: #ffffff; /* Icon color */
+  color: #ffbe00; /* Icon color */
 }
 
 .browser-controls i {
   font-size: 20px; /* Adjust icon size if necessary */
-  color: #ffffff; /* Icon color */
+  color: #ffbe00; /* Icon color */
 }
 
 #main-content {
