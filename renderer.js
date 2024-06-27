@@ -1,4 +1,4 @@
-const API_KEY = 'AIzaSyARDM11ksDx3uySey-OQBSHT7fMfoDJd1E';
+const API_KEY = 'YOUR_API_KEY_HERE';
 const DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
 let currentLink = '';
 let historyStack = [];
@@ -108,6 +108,8 @@ function openLink(link) {
     historyStack.push(link);
     historyIndex++;
     document.getElementById('iframe-container').innerHTML = `<iframe src="${link}"></iframe>`;
+  } else {
+    alert('Invalid URL. Please enter a valid URL in the settings.');
   }
 }
 
@@ -207,9 +209,13 @@ function goToSettings() {
 
 function saveSettings() {
   const qcUrlInput = document.getElementById('qc-url-input').value;
-  localStorage.setItem('qcUrl', qcUrlInput);
-  alert('Settings saved.');
-  returnToMain();
+  if (isValidUrl(qcUrlInput)) {
+    localStorage.setItem('qcUrl', qcUrlInput);
+    alert('Settings saved.');
+    returnToMain();
+  } else {
+    alert('Please enter a valid URL.');
+  }
 }
 
 function returnToMain() {
