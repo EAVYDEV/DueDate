@@ -1,10 +1,10 @@
 /* Add styles for the horizontal line */
 .horizontal-line {
   width: 90%; /* Match the width of the refresh button */
-  height: 10px; /* Adjusted height */
-  background-color: #f4f4f4;
+  height: 5px; /* Adjusted height */
+  background-color: #0064966e;
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 body {
@@ -44,10 +44,10 @@ header h1 {
   padding: 10px 10px;
   background-color: #006496; /* Slightly darker blue */
   position: sticky;
-  top: 50px; /* Adjust based on the height of your header */
+  top: 100px; /* Adjust based on the height of your header */
   z-index: 999;
   width: 100%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .browser-controls {
