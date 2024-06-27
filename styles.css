@@ -149,17 +149,6 @@ header {
   cursor: pointer;
 }
 
-.hamburger {
-  font-size: 30px;
-  cursor: pointer;
-  padding: 10px 15px;
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 1000; /* Ensure it stays on top */
-  color: #ffffff; /* White color */
-}
-
 .iframe-container {
   width: 100%;
   height: calc(100% - 50px); /* Adjusted height to make space for controls */

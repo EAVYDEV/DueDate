@@ -17,7 +17,6 @@
     <h1>Project Management Interface</h1>
   </header>
   <div class="utility-bar">
-    <button onclick="toggleNav()">&#9776; Toggle Sidebar</button>
     <!-- Add any additional utility buttons or elements here -->
   </div>
   <div class="sidebar" id="sidebar">
@@ -42,19 +41,6 @@
   </div>
 
   <script>
-    function toggleNav() {
-      const sidebar = document.getElementById('sidebar');
-      const main = document.getElementById('main');
-      if (sidebar.classList.contains('collapsed')) {
-        sidebar.classList.remove('collapsed');
-        adjustMainMargin();
-      } else {
-        sidebar.classList.add('collapsed');
-        main.style.marginLeft = '20px';
-        main.style.width = 'calc(100% - 20px)';
-      }
-    }
-
     function filterProjects() {
       const searchInput = document.getElementById('search-input').value.toLowerCase();
       const projectCards = document.getElementsByClassName('project-card');
