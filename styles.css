@@ -53,38 +53,188 @@ header h1 {
   height: calc(100% - 60px); /* Adjust based on header height */
 }
 
-.hidden {
-  display: none;
+.sidebar {
+  width: 300px;
+  min-width: 200px;
+  max-width: 500px;
+  background-color: #002e7217; /* Awnex primary blue */
+  padding-top: 20px;
+  transition: width 0.3s;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  resize: horizontal;
+  overflow: auto;
 }
 
-.project-button {
-  display: block;
-  margin: 10px 0;
-  padding: 10px;
+.sidebar-controls {
   width: 100%;
-  box-sizing: border-box;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.yellow {
-  background-color: yellow;
+.sidebar-controls input[type="text"],
+.sidebar-controls #refresh-button,
+.sidebar-controls #add-qc-button {
+  width: calc(100% - 20px); /* Ensure it matches the width of project cards */
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-bottom: 10px; /* Space between input and other elements */
+}
+
+.sidebar-controls input[type="text"] {
+  border: 1px solid #006496; /* Awnex primary blue */
+  background-color: #ffffff; /* White background to avoid transparency */
+}
+
+.sidebar-controls #refresh-button {
+  background-color: #ffbe00; /* Yellow color */
+  color: #000; /* Black text */
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar-controls #add-qc-button {
+  background-color: #ee4b2b; /* Red color */
+  color: #fff; /* White text */
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar .sticky-controls {
+  position: sticky;
+  top: 0;
+  background-color: inherit;
+  width: 100%;
+  padding: 10px 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.collapsed {
+  width: 0 !important;
+  overflow: hidden;
+}
+
+.sidebar a {
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #ffffff; /* White text color */
+  display: block;
+  transition: 0.3s;
+  width: 100%;
+  text-align: center;
+}
+
+.sidebar a:hover {
+  color: #ffcb05; /* Awnex yellow */
+}
+
+#main {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.project-card {
+  border: 1px solid #002d72; /* Awnex primary blue */
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  width: calc(100% - 20px); /* Adjusted width to be responsive */
+  background-color: #ffffff; /* White background */
+  color: #002d72; /* Awnex primary blue text */
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-card div {
+  margin-bottom: 5px;
 }
 
 .red {
-  background-color: red;
+  border-left: 10px solid #ee4b2b;
 }
 
-.green {
-  background-color: green;
+.orange {
+  border-left: 10px solid #ffd580;
+}
+
+.blue-background-class {
+  background-color: lightblue;
 }
 
 #loading-spinner {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 24px;
+  display: none;
+  text-align: center;
+  font-size: 18px;
 }
 
-.project-card.highlighted {
-  border: 2px solid blue;
+.iframe-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iframe-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+#settings-page {
+  display: none; /* Hidden by default */
+  width: 100%;
+  padding: 20px;
+}
+
+#settings-page h2 {
+  margin-top: 0;
+}
+
+#settings-page input[type="text"],
+#settings-page button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+#settings-page input[type="text"] {
+  border: 1px solid #ccc;
+}
+
+#settings-page button {
+  background-color: #006496; /* Awnex primary blue */
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
