@@ -9,7 +9,7 @@ body {
 
 header {
   width: 100%;
-  background-color: #002d72; /* Awnex primary blue */
+  background-color: #006496; /* Awnex primary blue */
   color: white;
   padding: 10px;
   text-align: center;
@@ -23,7 +23,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #004a8e; /* Slightly darker blue */
+  background-color: #006496; /* Slightly darker blue */
   position: sticky;
   top: 50px; /* Adjust based on the height of your header */
   z-index: 999;
