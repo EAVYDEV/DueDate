@@ -22,7 +22,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 80px;
   background-color: #006496; /* Slightly darker blue */
   position: sticky;
   top: 50px; /* Adjust based on the height of your header */
