@@ -51,7 +51,7 @@ header h1 {
 }
 
 #search-input {
-  width: 300px; /* Adjust width as necessary */
+  width: 90%; /* Match the width of the refresh button */
   padding: 10px;
   font-size: 16px;
   border: 1px solid #006496; /* Awnex primary blue */
