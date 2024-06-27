@@ -190,7 +190,7 @@ header {
 .browser-controls {
   display: flex;
   justify-content: right;
-  align-items: center;
+  align-items: right;
   margin-bottom: 10px;
   position: absolute;
   left: 50%;
