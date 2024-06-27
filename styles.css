@@ -195,6 +195,7 @@ header h1 {
   border: 1px solid #006496; /* Awnex primary blue */
   border-radius: 5px;
   margin-bottom: 10px; /* Space between buttons */
+  background-color: #ffffff; /* White background to avoid transparency */
 }
 
 #refresh-button {
