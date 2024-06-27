@@ -15,18 +15,18 @@
 <body>
   <header>
     <h1>Awnex Quickview</h1>
-    <div class="header-utilities">
-      <input type="text" id="search-input" placeholder="Search projects..." onkeyup="filterProjects()">
-      <button id="refresh-button" onclick="loadSheetData()">Refresh</button>
-      <div class="browser-controls">
-        <button onclick="goBack()"><i class="fas fa-arrow-left"></i></button>
-        <button onclick="goForward()"><i class="fas fa-arrow-right"></i></button>
-        <button onclick="reloadPage()"><i class="fas fa-sync-alt"></i></button>
-        <button onclick="goHome()"><i class="fas fa-home"></i></button>
-      </div>
+    <div class="browser-controls">
+      <button onclick="goBack()"><i class="fas fa-arrow-left"></i></button>
+      <button onclick="goForward()"><i class="fas fa-arrow-right"></i></button>
+      <button onclick="reloadPage()"><i class="fas fa-sync-alt"></i></button>
+      <button onclick="goHome()"><i class="fas fa-home"></i></button>
     </div>
   </header>
   <div class="sidebar" id="sidebar">
+    <div class="sidebar-controls">
+      <input type="text" id="search-input" placeholder="Search projects..." onkeyup="filterProjects()">
+      <button id="refresh-button" onclick="loadSheetData()">Refresh</button>
+    </div>
     <section class="container" id="project-list">
       <!-- Project cards will be dynamically inserted here -->
     </section>
