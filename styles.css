@@ -1,9 +1,9 @@
 /* Add styles for the horizontal line */
 .horizontal-line {
   width: 90%; /* Match the width of the refresh button */
-  height: 10px; /* Adjusted height */
-  background-color: #f4f4f4;
-  margin-top: 10px;
+  height: 5px; /* Adjusted height */
+  background-color: #00649693;
+  margin-top: 5px;
   margin-bottom: 10px;
 }
 
@@ -51,7 +51,7 @@ header h1 {
 }
 
 #search-input {
-  width: 90%; /* Match the width of the refresh button */
+  width: 20%; /* Match the width of the refresh button */
   padding: 10px;
   font-size: 16px;
   border: 1px solid #006496; /* Awnex primary blue */
