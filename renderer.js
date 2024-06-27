@@ -145,6 +145,20 @@ function goHome() {
   }
 }
 
+function filterProjects() {
+  const searchInput = document.getElementById('search-input').value.toLowerCase();
+  const projectCards = document.getElementsByClassName('project-card');
+
+  Array.from(projectCards).forEach(card => {
+    const orderInfo = card.getElementsByClassName('order-info')[0].innerText.toLowerCase();
+    if (orderInfo.includes(searchInput)) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
 function addTouchSupport() {
   const hammer = new Hammer(document.body);
 
