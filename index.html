@@ -20,12 +20,14 @@
       <button onclick="goForward()"><i class="fas fa-arrow-right"></i></button>
       <button onclick="reloadPage()"><i class="fas fa-sync-alt"></i></button>
       <button onclick="goHome()"><i class="fas fa-home"></i></button>
+      <button onclick="toggleSettings()"><i class="fas fa-cog"></i></button>
     </div>
   </header>
   <div class="sidebar" id="sidebar">
     <div class="sidebar-controls">
       <input type="text" id="search-input" placeholder="Search projects..." onkeyup="filterProjects()">
       <button id="refresh-button" onclick="loadSheetData()">Refresh</button>
+      <button id="add-qc-button" onclick="goToAddQC()">Add QC</button>
     </div>
     <section class="container" id="project-list">
       <!-- Project cards will be dynamically inserted here -->
@@ -35,6 +37,15 @@
   <div id="main">
     <div class="iframe-container" id="iframe-container">
       <!-- The iframe for displaying links will be dynamically inserted here -->
+    </div>
+  </div>
+  <div id="settings-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="toggleSettings()">&times;</span>
+      <h2>Settings</h2>
+      <label for="qc-url-input">QC URL:</label>
+      <input type="text" id="qc-url-input" placeholder="Enter QC URL">
+      <button onclick="saveSettings()">Save</button>
     </div>
   </div>
 </body>

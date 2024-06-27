@@ -196,6 +196,30 @@ function handleTouchEnd(evt) {
   touchStartX = null;
 }
 
+function toggleSettings() {
+  const modal = document.getElementById('settings-modal');
+  if (modal.style.display === "block") {
+    modal.style.display = "none";
+  } else {
+    modal.style.display = "block";
+  }
+}
+
+function saveSettings() {
+  const qcUrlInput = document.getElementById('qc-url-input').value;
+  localStorage.setItem('qcUrl', qcUrlInput);
+  toggleSettings();
+}
+
+function goToAddQC() {
+  const qcUrl = localStorage.getItem('qcUrl');
+  if (qcUrl && isValidUrl(qcUrl)) {
+    window.open(qcUrl, '_blank');
+  } else {
+    alert('Please set a valid QC URL in the settings.');
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   handleClientLoad();
   addTouchSupport();
