@@ -1,12 +1,3 @@
-/* Add styles for the horizontal line */
-.horizontal-line {
-  width: 90%; /* Match the width of the refresh button */
-  height: 10px; /* Adjusted height */
-  background-color: #f4f4f4;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
 body {
   display: flex;
   height: 100vh;
@@ -23,47 +14,42 @@ header {
   padding: 10px 20px; /* Adjust padding to reduce height */
   display: flex;
   align-items: center;
-  justify-content: center; /* Center the title horizontally */
+  justify-content: space-between; /* Adjusted to space between the title and utilities */
   position: sticky;
   top: 0;
   z-index: 1000;
-  height: 50px; /* Adjusted height */
+  height: 60px; /* Adjusted height */
 }
 
 header h1 {
   margin: 0;
   font-size: 1.2em; /* Adjust font size if necessary */
-  flex: 1;
-  text-align: center; /* Center the text within the flex container */
 }
 
-.utility-bar {
+.header-utilities {
   display: flex;
-  justify-content: space-between; /* Space between search input and browser controls */
   align-items: center;
-  padding: 10px 20px;
-  background-color: #006496; /* Slightly darker blue */
-  position: sticky;
-  top: 50px; /* Adjust based on the height of your header */
-  z-index: 999;
-  width: 100%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#search-input, #refresh-button {
-  width: 300px; /* Match the width */
+.header-utilities input[type="text"] {
+  width: 300px;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #006496; /* Awnex primary blue */
   border-radius: 5px;
   background-color: #ffffff; /* White background to avoid transparency */
-  margin-bottom: 10px; /* Space between buttons */
+  margin-right: 10px; /* Space between input and other elements */
 }
 
-#refresh-button {
+.header-utilities #refresh-button {
   background-color: #006496; /* Awnex primary blue */
   color: #fff;
   cursor: pointer;
+  margin-right: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
 }
 
 .browser-controls {
@@ -73,7 +59,7 @@ header h1 {
 
 .browser-controls button {
   margin: 0 5px;
-  padding: 5px; /* Adjust padding to reduce button size */
+  padding: 10px; /* Adjust padding to reduce button size */
   font-size: 16px;
   cursor: pointer;
   border: 1px solid #006496; /* Awnex primary blue */
@@ -88,12 +74,12 @@ header h1 {
 }
 
 .sidebar {
-  height: calc(100% - 100px); /* Adjust based on header and utility bar height */
+  height: calc(100% - 60px); /* Adjust based on header height */
   width: 300px;
   min-width: 200px;
   max-width: 500px;
   position: fixed;
-  top: 100px; /* Adjust based on header and utility bar height */
+  top: 60px; /* Adjust based on header height */
   left: 0;
   background-color: #002e7217; /* Awnex primary blue */
   padding-top: 20px;
@@ -142,9 +128,9 @@ header h1 {
   transition: margin-left 0.3s;
   padding: 16px;
   margin-left: 300px;
-  margin-top: 100px; /* Adjust based on header and utility bar height */
+  margin-top: 60px; /* Adjust based on header height */
   width: calc(100% - 300px);
-  height: calc(100% - 100px);
+  height: calc(100% - 60px);
   overflow-y: auto;
   display: flex;
   flex-direction: column;
