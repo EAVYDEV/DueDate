@@ -3,17 +3,58 @@ body {
   height: 100vh;
   font-family: 'Arial', sans-serif;
   background-color: #f4f4f4;
+  flex-direction: column;
+  margin: 0;
+}
+
+.header {
+  width: 100%;
+  background-color: #006496; /* Awnex primary blue */
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header .logo {
+  font-size: 24px;
+}
+
+.header .utility-bar {
+  display: flex;
+  align-items: center;
+}
+
+.header .utility-bar button {
+  margin-left: 10px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #006496;
+}
+
+.header .utility-bar button:hover {
+  background-color: #ffcb05; /* Awnex yellow */
+  color: #fff;
 }
 
 .sidebar {
-  height: 100%;
+  height: calc(100% - 50px); /* Adjusted for header height */
   width: 300px;
   min-width: 200px;
   max-width: 500px;
   position: fixed;
-  top: 0;
+  top: 50px; /* Adjusted for header height */
   left: 0;
-  background-color: #002e7200; /* Awnex primary blue */
+  background-color: #002e7217; /* Awnex primary blue */
   padding-top: 20px;
   transition: width 0.3s;
   overflow-y: auto;
@@ -49,7 +90,7 @@ body {
   padding: 16px;
   margin-left: 300px;
   width: calc(100% - 300px);
-  height: 100%;
+  height: calc(100% - 50px); /* Adjusted for header height */
   overflow-y: auto;
   display: flex;
   flex-direction: column;
