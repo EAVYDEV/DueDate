@@ -17,10 +17,7 @@
     <h1>Awnex Quickview</h1>
   </header>
   <div class="utility-bar">
-    <div class="utility-controls">
-      <input type="text" id="search-input" placeholder="Search projects..." onkeyup="filterProjects()">
-      <button id="refresh-button" onclick="loadSheetData()">Refresh</button>
-    </div>
+    <input type="text" id="search-input" placeholder="Search projects..." onkeyup="filterProjects()">
     <div class="browser-controls">
       <button onclick="goBack()"><i class="fas fa-arrow-left"></i></button>
       <button onclick="goForward()"><i class="fas fa-arrow-right"></i></button>
@@ -30,6 +27,7 @@
   </div>
   <div class="sidebar" id="sidebar">
     <div class="sticky-controls">
+      <button id="refresh-button" onclick="loadSheetData()">Refresh</button>
       <div class="horizontal-line"></div>
     </div>
     <section class="container" id="project-list">
