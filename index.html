@@ -20,8 +20,11 @@
     <!-- Add any additional utility buttons or elements here -->
   </div>
   <div class="sidebar" id="sidebar">
-    <button id="refresh-button" onclick="loadSheetData()">Refresh</button>
-    <input type="text" id="search-input" placeholder="Search projects..." onkeyup="filterProjects()">
+    <div class="sticky-controls">
+      <input type="text" id="search-input" placeholder="Search projects..." onkeyup="filterProjects()">
+      <button id="refresh-button" onclick="loadSheetData()">Refresh</button>
+      <div class="horizontal-line"></div>
+    </div>
     <section class="container" id="project-list">
       <!-- Project cards will be dynamically inserted here -->
     </section>
