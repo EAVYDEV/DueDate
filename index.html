@@ -41,8 +41,7 @@
       const main = document.getElementById('main');
       if (sidebar.classList.contains('collapsed')) {
         sidebar.classList.remove('collapsed');
-        main.style.marginLeft = '320px';
-        main.style.width = 'calc(100% - 320px)';
+        adjustMainMargin();
       } else {
         sidebar.classList.add('collapsed');
         main.style.marginLeft = '20px';
@@ -69,6 +68,7 @@
     function adjustMainMargin() {
       const sidebarWidth = document.querySelector('.sidebar').offsetWidth;
       document.getElementById('main').style.marginLeft = sidebarWidth + 'px';
+      document.getElementById('main').style.width = `calc(100% - ${sidebarWidth}px)`;
     }
 
     window.addEventListener('resize', adjustMainMargin);

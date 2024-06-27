@@ -7,18 +7,21 @@ body {
 
 .sidebar {
   height: 100%;
-  min-width: 300px;
   width: 300px;
+  min-width: 200px;
+  max-width: 500px;
   position: fixed;
   top: 0;
   left: 0;
   background-color: #002e7217; /* Awnex primary blue */
   padding-top: 20px;
-  transition: 0.5s;
+  transition: width 0.3s;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  resize: horizontal;
+  overflow: auto;
 }
 
 .collapsed {
@@ -33,6 +36,8 @@ body {
   color: #ffffff; /* White text color */
   display: block;
   transition: 0.3s;
+  width: 100%;
+  text-align: center;
 }
 
 .sidebar a:hover {
@@ -40,10 +45,10 @@ body {
 }
 
 #main {
-  transition: margin-left 0.5s;
+  transition: margin-left 0.3s;
   padding: 16px;
-  margin-left: 320px; /* Adjusted for minimum sidebar width */
-  width: calc(100% - 320px);
+  margin-left: 300px;
+  width: calc(100% - 300px);
   height: 100%;
   overflow-y: auto;
   display: flex;
@@ -68,7 +73,7 @@ body {
   border-radius: 5px;
   margin: 10px;
   padding: 10px;
-  width: calc(100% - 40px); /* Adjusted width */
+  width: 100%; /* Adjusted width to be responsive */
   background-color: #ffffff; /* White background */
   color: #002d72; /* Awnex primary blue text */
   cursor: pointer;
@@ -103,9 +108,7 @@ body {
 }
 
 #search-input, #refresh-button {
-  width: calc(100% - 40px); /* Adjusted width */
-  margin-left: 10px;
-  margin-right: 10px;
+  width: 90%; /* Adjusted width to be responsive */
   padding: 10px;
   font-size: 16px;
   border: 1px solid #006496; /* Awnex primary blue */
@@ -161,9 +164,4 @@ body {
   border-radius: 5px;
   background-color: #006496; /* Awnex primary blue */
   color: #fff;
-}
-.project-card .order-info {
-  background-color: rgba(255, 0, 204, 0.9); /* 50% opacity grey */
-  padding: 5px;
-  border-radius: 3px;
 }
