@@ -3,29 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Awnex Quick View</title>
+  <title>Awnex Quickview</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+  <script src="renderer.js" defer></script>
 </head>
 <body>
-  <div id="main-content">
-    <!-- Sidebar and main content here -->
-    <div id="sidebar">
-      <button id="refresh-button" class="project-button yellow">Refresh</button>
-      <input type="text" id="search-input" placeholder="Search" class="project-button">
-      <button id="add-qc-button" class="project-button red">Add QC</button>
+  <header>
+    <h1>Awnex Quickview</h1>
+    <div class="browser-controls">
+      <button onclick="goBack()"><i class="fas fa-arrow-left"></i></button>
+      <button onclick="goForward()"><i class="fas fa-arrow-right"></i></button>
+      <button onclick="reloadPage()"><i class="fas fa-sync-alt"></i></button>
+      <button onclick="goHome()"><i class="fas fa-home"></i></button>
+      <button onclick="goToSettings()"><i class="fas fa-cog"></i></button>
     </div>
-    <div id="project-list"></div>
+  </header>
+  <div id="main-content">
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-controls">
+        <input type="text" id="search-input" placeholder="Search projects..." onkeyup="filterProjects()">
+        <button id="refresh-button" onclick="loadSheetData()">Refresh</button>
+        <button id="add-qc-button" onclick="goToAddQC()">Add QC</button>
+      </div>
+      <section class="container" id="project-list">
+        <!-- Project cards will be dynamically inserted here -->
+      </section>
+      <div id="loading-spinner">Loading...</div>
+    </div>
+    <div id="main">
+      <div class="iframe-container" id="iframe-container">
+        <!-- The iframe for displaying links will be dynamically inserted here -->
+      </div>
+    </div>
   </div>
   <div id="settings-page" class="hidden">
     <h2>Settings</h2>
     <label for="qc-url-input">QC URL:</label>
-    <input type="text" id="qc-url-input">
-    <button id="save-settings-button" class="project-button green">Save</button>
-    <button id="back-button" class="project-button">Back</button>
+    <input type="text" id="qc-url-input" placeholder="Enter QC URL">
+    <button onclick="saveSettings()">Save</button>
+    <button onclick="returnToMain()">Back</button>
   </div>
-  <div id="iframe-container"></div>
-  <div id="loading-spinner" class="hidden">Loading...</div>
-  <script src="https://apis.google.com/js/api.js" onload="handleClientLoad()"></script>
-  <script src="renderer.js"></script>
 </body>
 </html>
