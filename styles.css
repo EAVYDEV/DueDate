@@ -1,8 +1,8 @@
 /* Add styles for the horizontal line */
 .horizontal-line {
   width: 90%; /* Match the width of the refresh button */
-  height: 10px; /* Adjusted height */
-  background-color: #f4f4f4;
+  height: 5px; /* Adjusted height */
+  background-color: #006496a2;
   margin-top: 10px;
   margin-bottom: 10px;
 }
