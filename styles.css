@@ -13,7 +13,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #002e7217; /* Awnex primary blue */
+  background-color: #002e7200; /* Awnex primary blue */
   padding-top: 20px;
   transition: width 0.3s;
   overflow-y: auto;
