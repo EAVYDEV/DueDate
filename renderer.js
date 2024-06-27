@@ -3,6 +3,7 @@ const DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v
 let currentLink = '';
 let historyStack = [];
 let historyIndex = -1;
+let activeCard = null;
 
 function handleClientLoad() {
   console.log('Google API client library loaded');
@@ -63,7 +64,7 @@ function createProjectCard(row, currentDate) {
   if (fabDueDate) card.setAttribute('data-date', fabDueDate.toISOString().split('T')[0]);
   if (qcReady && qcReady.toLowerCase() === 'yes') card.style.border = '10px solid rgba(255, 0, 0, 0.75)';
   card.innerHTML = generateCardHTML(orderNumber, name, fabDue, zone, scope, am, qcNotes, link, drawingsLink, qcReady);
-  if (isValidUrl(link)) card.addEventListener('click', () => openLink(link));
+  if (isValidUrl(link)) card.addEventListener('click', () => openLink(link, card));
   return { card, qcReady };
 }
 
@@ -97,13 +98,20 @@ function initializeSortable(projectList) {
   });
 }
 
-function openLink(link) {
+function openLink(link, card) {
   if (isValidUrl(link)) {
     currentLink = link;
     historyStack = historyStack.slice(0, historyIndex + 1);
     historyStack.push(link);
     historyIndex++;
     document.getElementById('iframe-container').innerHTML = `<iframe src="${link}"></iframe>`;
+
+    // Highlight the active card
+    if (activeCard) {
+      activeCard.classList.remove('active');
+    }
+    activeCard = card;
+    activeCard.classList.add('active');
   } else {
     alert('Invalid URL. Please enter a valid URL in the settings.');
   }
