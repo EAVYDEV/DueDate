@@ -210,6 +210,10 @@ function saveSettings() {
   const qcUrlInput = document.getElementById('qc-url-input').value;
   localStorage.setItem('qcUrl', qcUrlInput);
   alert('Settings saved.');
+  returnToMain();
+}
+
+function returnToMain() {
   document.getElementById('settings-page').classList.add('hidden');
   document.getElementById('main').classList.remove('hidden');
   document.getElementById('sidebar').classList.remove('hidden');
