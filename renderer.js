@@ -209,7 +209,7 @@ function handleTouchEnd(evt) {
 function goToSettings() {
   document.getElementById('settings-page').classList.remove('hidden');
   document.getElementById('main-content').classList.add('hidden');
-  const savedHere is the complete and updated code for your Electron application:
+  constHere are the complete and updated code files for your Electron application:
 
 ### **main.js:**
 
@@ -223,8 +223,8 @@ function createWindow() {
     height: 800,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      nodeIntegration: false,
-      contextIsolation: true,
+      nodeIntegration: false, // Ensure nodeIntegration is false
+      contextIsolation: true,  // Use context isolation for security
     }
   });
 
