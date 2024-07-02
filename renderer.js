@@ -58,9 +58,9 @@ function displaySheetData(data) {
 function createProjectCard(row, currentDate) {
   const [orderNumber, name, fabDue, zone, scope, am, qcNotes, link, drawingsLink, qcReady] = row;
   const fabDueDate = parseDate(fabDue);
-  const isFutureDue = fabDueDate && fabDueDate > currentDate;
+  const isPastDue = fabDueDate && fabDueDate < currentDate;
   const card = document.createElement('div');
-  card.className = `project-card ${isFutureDue ? 'red' : 'yellow'}`;
+  card.className = `project-card ${isPastDue ? 'yellow' : 'red'}`;
   if (fabDueDate) card.setAttribute('data-date', fabDueDate.toISOString().split('T')[0]);
   if (qcReady && qcReady.toLowerCase() === 'yes') card.style.border = '10px solid rgba(255, 0, 0, 0.75)';
   card.innerHTML = generateCardHTML(orderNumber, name, fabDue, zone, scope, am, qcNotes, link, drawingsLink, qcReady);
