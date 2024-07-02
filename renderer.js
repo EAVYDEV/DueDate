@@ -112,7 +112,7 @@ function openLink(link, card) {
     iframe.style.width = '100%';
     iframe.style.height = '100%';
     iframe.style.border = 'none';
-    iframe.sandbox = 'allow-same-origin allow-scripts allow-forms allow-top-navigation-by-user-activation';
+    iframe.sandbox = 'allow-same-origin allow-scripts allow-forms allow-top-navigation-by-user-activation allow-popups';
     iframeContainer.appendChild(iframe);
 
     // Highlight the active card
@@ -124,6 +124,8 @@ function openLink(link, card) {
   } else {
     alert('Invalid URL. Please enter a valid URL in the settings.');
   }
+}
+
 }
 
 function isValidUrl(string) {
