@@ -162,8 +162,8 @@ header h1 {
 }
 
 .project-card.active {
-  border: 3px solid #ffbe00; /* Highlight color */
-  box-shadow: 0 0 10px rgba(255, 190, 0, 0.5); /* Optional: add a shadow for better visibility */
+  border: 3px solid #499feb; /* Highlight color */
+  box-shadow: 0 0 10px rgba(85, 85, 84, 0.5); /* Optional: add a shadow for better visibility */
 }
 
 .project-card div {
