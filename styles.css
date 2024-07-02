@@ -11,19 +11,19 @@ header {
   width: 100%;
   background-color: #006496; /* Awnex primary blue */
   color: white;
-  padding: 10px 20px; /* Adjust padding to reduce height */
+  padding: 10px 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Adjusted to space between the title and controls */
+  justify-content: space-between;
   position: sticky;
   top: 0;
   z-index: 1000;
-  height: 60px; /* Adjusted height */
+  height: 60px;
 }
 
 header h1 {
   margin: 0;
-  font-size: 1.2em; /* Adjust font size if necessary */
+  font-size: 1.2em;
 }
 
 .browser-controls {
@@ -33,31 +33,31 @@ header h1 {
 
 .browser-controls button {
   margin: 0 5px;
-  padding: 10px; /* Adjust padding to reduce button size */
+  padding: 10px;
   font-size: 16px;
   cursor: pointer;
-  border: 1px solid #006496; /* Awnex primary blue */
+  border: 1px solid #006496;
   border-radius: 5px;
-  background-color: #006496; /* Awnex primary blue */
-  color: #ffffff; /* Icon color */
+  background-color: #006496;
+  color: #ffffff;
 }
 
 .browser-controls i {
-  font-size: 20px; /* Adjust icon size if necessary */
-  color: #ffbe00; /* Icon color */
+  font-size: 20px;
+  color: #ffbe00;
 }
 
 #main-content {
   display: flex;
   width: 100%;
-  height: calc(100% - 60px); /* Adjust based on header height */
+  height: calc(100% - 60px);
 }
 
 .sidebar {
   width: 300px;
   min-width: 200px;
   max-width: 500px;
-  background-color: #002e7217; /* Awnex primary blue */
+  background-color: #002e7217;
   padding-top: 20px;
   transition: width 0.3s;
   overflow-y: auto;
@@ -75,35 +75,35 @@ header h1 {
   align-items: center;
   position: sticky;
   top: 0;
-  background-color: #002e7217; /* Awnex primary blue */
+  background-color: #002e7217;
   z-index: 100;
 }
 
 .sidebar-controls input[type="text"],
 .sidebar-controls #refresh-button,
 .sidebar-controls #add-qc-button {
-  width: calc(100% - 20px); /* Ensure it matches the width of project cards */
+  width: calc(100% - 20px);
   padding: 10px;
   font-size: 16px;
   border-radius: 5px;
-  margin-bottom: 10px; /* Space between input and other elements */
+  margin-bottom: 10px;
 }
 
 .sidebar-controls input[type="text"] {
-  border: 1px solid #006496; /* Awnex primary blue */
-  background-color: #ffffff; /* White background to avoid transparency */
+  border: 1px solid #006496;
+  background-color: #ffffff;
 }
 
 .sidebar-controls #refresh-button {
-  background-color: #ffbe00; /* Yellow color */
-  color: #000; /* Black text */
+  background-color: #ffbe00;
+  color: #000;
   border: none;
   cursor: pointer;
 }
 
 .sidebar-controls #add-qc-button {
-  background-color: #ee4b2b; /* Red color */
-  color: #fff; /* White text */
+  background-color: #ee4b2b;
+  color: #fff;
   border: none;
   cursor: pointer;
 }
@@ -117,7 +117,7 @@ header h1 {
   padding: 10px 15px;
   text-decoration: none;
   font-size: 18px;
-  color: #ffffff; /* White text color */
+  color: #ffffff;
   display: block;
   transition: 0.3s;
   width: 100%;
@@ -125,7 +125,7 @@ header h1 {
 }
 
 .sidebar a:hover {
-  color: #ffcb05; /* Awnex yellow */
+  color: #ffcb05;
 }
 
 #main {
@@ -145,13 +145,13 @@ header h1 {
 }
 
 .project-card {
-  border: 1px solid #002d72; /* Awnex primary blue */
+  border: 1px solid #002d72;
   border-radius: 5px;
   margin: 10px;
   padding: 10px;
-  width: calc(100% - 20px); /* Adjusted width to be responsive */
-  background-color: #ffffff; /* White background */
-  color: #002d72; /* Awnex primary blue text */
+  width: calc(100% - 20px);
+  background-color: #ffffff;
+  color: #002d72;
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
@@ -162,8 +162,8 @@ header h1 {
 }
 
 .project-card.active {
-  border: 3px solid #499feb; /* Highlight color */
-  box-shadow: 0 0 10px rgba(85, 85, 84, 0.5); /* Optional: add a shadow for better visibility */
+  border: 3px solid #499feb;
+  box-shadow: 0 0 10px rgba(85, 85, 84, 0.5);
 }
 
 .project-card div {
@@ -192,45 +192,38 @@ header h1 {
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items:Here are the complete and updated codes for each file in your Electron application:
+
+### **main.js:**
+
+```javascript
+const { app, BrowserWindow } = require('electron');
+const path = require('path');
+
+function createWindow() {
+  const mainWindow = new BrowserWindow({
+    width: 1200,
+    height: 800,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: false,
+      contextIsolation: true,
+    }
+  });
+
+  mainWindow.loadFile('index.html').catch(error => {
+    console.error('Failed to load index.html:', error);
+  });
 }
 
-.iframe-container iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
+app.whenReady().then(() => {
+  createWindow();
 
-#settings-page {
-  display: none; /* Hidden by default */
-  width: 100%;
-  padding: 20px;
-}
+  app.on('activate', function () {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
+});
 
-#settings-page h2 {
-  margin-top: 0;
-}
-
-#settings-page input[type="text"],
-#settings-page button {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 5px;
-}
-
-#settings-page input[type="text"] {
-  border: 1px solid #ccc;
-}
-
-#settings-page button {
-  background-color: #006496; /* Awnex primary blue */
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.hidden {
-  display: none;
-}
+app.on('window-all-closed', function () {
+  if (process.platform !== 'darwin') app.quit();
+});

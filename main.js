@@ -1,4 +1,4 @@
-const { app, BrowserWindow, session } = require('electron');
+const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
 function createWindow() {
@@ -7,38 +7,13 @@ function createWindow() {
     height: 800,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      nodeIntegration: true,
-      contextIsolation: false,
+      nodeIntegration: false, // Ensure nodeIntegration is false
+      contextIsolation: true,  // Use context isolation for security
     }
   });
 
   mainWindow.loadFile('index.html').catch(error => {
     console.error('Failed to load index.html:', error);
-  });
-
-  mainWindow.webContents.on('did-finish-load', () => {
-    mainWindow.webContents.executeJavaScript(`
-      document.addEventListener('DOMContentLoaded', () => {
-        document.body.style.touchAction = 'manipulation';
-      });
-    `);
-  });
-
-  setCookies();
-}
-
-function setCookies() {
-  session.defaultSession.cookies.set({
-    url: 'http://yourappurl.com',
-    name: 'cookieName',
-    value: 'cookieValue',
-    domain: 'yourappurl.com',
-    secure: true,
-    sameSite: 'no_restriction'
-  }).then(() => {
-    console.log('Cookie set successfully');
-  }).catch((error) => {
-    console.error('Error setting cookie', error);
   });
 }
 

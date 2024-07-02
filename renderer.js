@@ -1,4 +1,4 @@
-const API_KEY = 'AIzaSyARDM11ksDx3uySey-OQBSHT7fMfoDJd1E';
+const API_KEY = 'YOUR_API_KEY';
 const DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
 let currentLink = '';
 let historyStack = [];
@@ -209,49 +209,38 @@ function handleTouchEnd(evt) {
 function goToSettings() {
   document.getElementById('settings-page').classList.remove('hidden');
   document.getElementById('main-content').classList.add('hidden');
-  const savedUrl = localStorage.getItem('qcUrl');
-  if (savedUrl) {
-    document.getElementById('qc-url-input').value = savedUrl;
-  }
+  const savedHere is the complete and updated code for your Electron application:
+
+### **main.js:**
+
+```javascript
+const { app, BrowserWindow } = require('electron');
+const path = require('path');
+
+function createWindow() {
+  const mainWindow = new BrowserWindow({
+    width: 1200,
+    height: 800,
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: false,
+      contextIsolation: true,
+    }
+  });
+
+  mainWindow.loadFile('index.html').catch(error => {
+    console.error('Failed to load index.html:', error);
+  });
 }
 
-function saveSettings() {
-  const qcUrlInput = document.getElementById('qc-url-input').value;
-  if (isValidUrl(qcUrlInput)) {
-    localStorage.setItem('qcUrl', qcUrlInput);
-    alert('Settings saved.');
-    returnToMain();
-  } else {
-    alert('Please enter a valid URL.');
-  }
-}
+app.whenReady().then(() => {
+  createWindow();
 
-function returnToMain() {
-  document.getElementById('settings-page').classList.add('hidden');
-  document.getElementById('main-content').classList.remove('hidden');
-}
+  app.on('activate', function () {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
+});
 
-function goToAddQC() {
-  const qcUrl = localStorage.getItem('qcUrl');
-  if (qcUrl && isValidUrl(qcUrl)) {
-    openLink(qcUrl);
-  } else {
-    alert('Please set a valid QC URL in the settings.');
-  }
-}
-
-function toggleLoadingSpinner(show) {
-  document.getElementById('loading-spinner').style.display = show ? 'block' : 'none';
-}
-
-function handleError(message, error) {
-  console.error(message, error);
-  alert(`${message}. Please check the console for more details.`);
-  toggleLoadingSpinner(false);
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  handleClientLoad();
-  addTouchSupport();
-  document.getElementById('search-input').addEventListener('input', filterProjects);
+app.on('window-all-closed', function () {
+  if (process.platform !== 'darwin') app.quit();
 });
