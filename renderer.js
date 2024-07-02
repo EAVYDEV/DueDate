@@ -120,15 +120,6 @@ function openLink(link, card) {
     }
     activeCard = card;
     activeCard.classList.add('active');
-
-    // Add click handler to the iframe content
-    iframe.onload = () => {
-      const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-      const links = iframeDocument.getElementsByTagName('a');
-      for (const link of links) {
-        link.setAttribute('target', '_self');
-      }
-    };
   } else {
     alert('Invalid URL. Please enter a valid URL in the settings.');
   }
