@@ -55,7 +55,7 @@ function displaySheetData(data) {
   initializeSortable(projectList);
 }
 
-ffunction createProjectCard(row, currentDate) {
+function createProjectCard(row, currentDate) {
   const [orderNumber, name, fabDue, zone, scope, am, qcNotes, link, drawingsLink, qcReady] = row;
   const fabDueDate = parseDate(fabDue);
   const isFutureDue = fabDueDate && fabDueDate > currentDate;
@@ -66,8 +66,6 @@ ffunction createProjectCard(row, currentDate) {
   card.innerHTML = generateCardHTML(orderNumber, name, fabDue, zone, scope, am, qcNotes, link, drawingsLink, qcReady);
   if (isValidUrl(link)) card.addEventListener('click', () => openLink(link, card));
   return { card, qcReady };
-}
-
 }
 
 function parseDate(dateString) {
