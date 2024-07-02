@@ -111,7 +111,7 @@ function openLink(link, card) {
     iframe.style.width = '100%';
     iframe.style.height = '100%';
     iframe.style.border = 'none';
-    iframe.sandbox = 'allow-same-origin allow-scripts allow-popups allow-forms';
+    iframe.sandbox = 'allow-same-origin allow-scripts allow-forms allow-top-navigation';
     iframeContainer.appendChild(iframe);
 
     // Highlight the active card
