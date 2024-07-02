@@ -126,8 +126,6 @@ function openLink(link, card) {
   }
 }
 
-}
-
 function isValidUrl(string) {
   try {
     new URL(string);
