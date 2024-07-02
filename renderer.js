@@ -111,7 +111,7 @@ function openLink(link, card) {
     iframe.style.width = '100%';
     iframe.style.height = '100%';
     iframe.style.border = 'none';
-    iframe.sandbox = 'allow-same-origin allow-scripts allow-forms allow-top-navigation';
+    iframe.sandbox = 'allow-same-origin allow-scripts allow-forms allow-top-navigation-by-user-activation';
     iframeContainer.appendChild(iframe);
 
     // Highlight the active card
@@ -120,6 +120,15 @@ function openLink(link, card) {
     }
     activeCard = card;
     activeCard.classList.add('active');
+
+    // Add click handler to the iframe content
+    iframe.onload = () => {
+      const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+      const links = iframeDocument.getElementsByTagName('a');
+      for (const link of links) {
+        link.setAttribute('target', '_self');
+      }
+    };
   } else {
     alert('Invalid URL. Please enter a valid URL in the settings.');
   }
