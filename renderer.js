@@ -99,6 +99,7 @@ function initializeSortable(projectList) {
 }
 
 function openLink(link, card) {
+  console.log(`Opening link: ${link}`);
   if (isValidUrl(link)) {
     currentLink = link;
     historyStack = historyStack.slice(0, historyIndex + 1);
