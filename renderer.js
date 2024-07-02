@@ -104,7 +104,14 @@ function openLink(link, card) {
     historyStack = historyStack.slice(0, historyIndex + 1);
     historyStack.push(link);
     historyIndex++;
-    document.getElementById('iframe-container').innerHTML = `<iframe src="${link}" style="width: 100%; height: 100%; border: none;"></iframe>`;
+    const iframeContainer = document.getElementById('iframe-container');
+    iframeContainer.innerHTML = '';
+    const iframe = document.createElement('iframe');
+    iframe.src = link;
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.style.border = 'none';
+    iframeContainer.appendChild(iframe);
 
     // Highlight the active card
     if (activeCard) {
@@ -129,25 +136,25 @@ function isValidUrl(string) {
 function goBack() {
   if (historyIndex > 0) {
     historyIndex--;
-    document.getElementById('iframe-container').innerHTML = `<iframe src="${historyStack[historyIndex]}" style="width: 100%; height: 100%; border: none;"></iframe>`;
+    openLink(historyStack[historyIndex], activeCard);
   }
 }
 
 function goForward() {
   if (historyIndex < historyStack.length - 1) {
     historyIndex++;
-    document.getElementById('iframe-container').innerHTML = `<iframe src="${historyStack[historyIndex]}" style="width: 100%; height: 100%; border: none;"></iframe>`;
+    openLink(historyStack[historyIndex], activeCard);
   }
 }
 
 function reloadPage() {
-  document.getElementById('iframe-container').innerHTML = `<iframe src="${currentLink}" style="width: 100%; height: 100%; border: none;"></iframe>`;
+  openLink(currentLink, activeCard);
 }
 
 function goHome() {
   if (historyStack.length > 0) {
     historyIndex = 0;
-    document.getElementById('iframe-container').innerHTML = `<iframe src="${historyStack[0]}" style="width: 100%; height: 100%; border: none;"></iframe>`;
+    openLink(historyStack[0], activeCard);
   }
 }
 
