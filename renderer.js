@@ -104,7 +104,7 @@ function openLink(link, card) {
     historyStack = historyStack.slice(0, historyIndex + 1);
     historyStack.push(link);
     historyIndex++;
-    document.getElementById('iframe-container').innerHTML = `<iframe src="${link}"></iframe>`;
+    document.getElementById('iframe-container').innerHTML = `<iframe src="${link}" style="width: 100%; height: 100%; border: none;"></iframe>`;
 
     // Highlight the active card
     if (activeCard) {
@@ -129,25 +129,25 @@ function isValidUrl(string) {
 function goBack() {
   if (historyIndex > 0) {
     historyIndex--;
-    document.getElementById('iframe-container').innerHTML = `<iframe src="${historyStack[historyIndex]}"></iframe>`;
+    document.getElementById('iframe-container').innerHTML = `<iframe src="${historyStack[historyIndex]}" style="width: 100%; height: 100%; border: none;"></iframe>`;
   }
 }
 
 function goForward() {
   if (historyIndex < historyStack.length - 1) {
     historyIndex++;
-    document.getElementById('iframe-container').innerHTML = `<iframe src="${historyStack[historyIndex]}"></iframe>`;
+    document.getElementById('iframe-container').innerHTML = `<iframe src="${historyStack[historyIndex]}" style="width: 100%; height: 100%; border: none;"></iframe>`;
   }
 }
 
 function reloadPage() {
-  document.getElementById('iframe-container').innerHTML = `<iframe src="${currentLink}"></iframe>`;
+  document.getElementById('iframe-container').innerHTML = `<iframe src="${currentLink}" style="width: 100%; height: 100%; border: none;"></iframe>`;
 }
 
 function goHome() {
   if (historyStack.length > 0) {
     historyIndex = 0;
-    document.getElementById('iframe-container').innerHTML = `<iframe src="${historyStack[0]}"></iframe>`;
+    document.getElementById('iframe-container').innerHTML = `<iframe src="${historyStack[0]}" style="width: 100%; height: 100%; border: none;"></iframe>`;
   }
 }
 
